@@ -1,3 +1,4 @@
+import { Button, Flex, SimpleGrid } from "@chakra-ui/react";
 import useMenuPickerViewController from "../../view-controllers/useMenuPickerViewController";
 
 type props = {
@@ -7,14 +8,14 @@ type props = {
 const MenuPicker = ({ setSelected }: props) => {
   const { menus, createMenu } = useMenuPickerViewController();
   return (
-    <div style={{ display: "inline-block" }}>
+    <Flex gap={10} style={{ display: "inline-block" }}>
       {menus?.map((menu, index) => (
-        <button key={index} onClick={() => setSelected(menu.id)}>
+        <Button key={index} onClick={() => setSelected(menu.id)}>
           {menu.name} {menu.id}
-        </button>
+        </Button>
       ))}
-      <button onClick={() => createMenu()}>+</button>
-    </div>
+      <Button onClick={() => createMenu()}>+</Button>
+    </Flex>
   );
 };
 

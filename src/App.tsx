@@ -4,20 +4,26 @@ import "./App.css";
 import MenuList from "./components/menu-list/menu-list";
 import MenuItemEditor from "./components/menu-item-editor/menu-item-editor";
 import MenuPicker from "./components/menu-picker/menu-picker";
+import { ChakraProvider, SimpleGrid } from "@chakra-ui/react";
 
 function App() {
   const [selectedMenu, setSelectedMenu] = useState<number>();
   const [selectedItem, setSelectedItem] = useState<string>();
 
   return (
-    <div className="App">
+    <ChakraProvider>
       <MenuPicker setSelected={setSelectedMenu}></MenuPicker>
-      <MenuList menuId={selectedMenu} setSelected={setSelectedItem}></MenuList>
-      <MenuItemEditor
-        menuId={selectedMenu}
-        itemId={selectedItem}
-      ></MenuItemEditor>
-    </div>
+      <SimpleGrid spacing={10} columns={2}>
+        <MenuList
+          menuId={selectedMenu}
+          setSelected={setSelectedItem}
+        ></MenuList>
+        <MenuItemEditor
+          menuId={selectedMenu}
+          itemId={selectedItem}
+        ></MenuItemEditor>
+      </SimpleGrid>
+    </ChakraProvider>
   );
 }
 

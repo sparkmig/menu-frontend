@@ -14,7 +14,7 @@ const MenuList = ({ setSelected, menuId }: props) => {
   const { items } = useMenuListViewController(menuId);
 
   return (
-    <SimpleGrid columns={2}>
+    <SimpleGrid spacing={5} columns={2}>
       {items?.map((item, index) => (
         <Card
           key={index}
